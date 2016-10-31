@@ -1,5 +1,5 @@
 class Player
-  attr_accessor :name, :bank_roll
+  attr_accessor :name, :bank_begin
 
   def initialize
     puts "What's your name player?"
@@ -9,7 +9,9 @@ class Player
     # Do we want bank roll to be a float? (we should install the currency gem?)
     # Player should have a wallet - when player gets created a new wallet instance is created
     # create a wallet class
-    @bank_roll = 100
+    @bank_begin = 100
   end
 
 end
+
+# Player.new
