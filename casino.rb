@@ -6,7 +6,7 @@ require_relative 'player'
 require_relative 'highlow'
 # require_relative 'wallet'
 
-class Casino # < wallet
+class Casino
   attr_accessor :player
 
   def initialize
@@ -21,15 +21,15 @@ class Casino # < wallet
     puts "3: Exit"
   end
 
-  # TODO: link this to the wallet class to get more money
-  def get_money # will get money from the atm
-    puts "How much money would you like to get from the ATM?"
-    money = gets.strip.to_i
-    puts "Getting your money"; sleep 1
-    puts "Was successfully added to your bankroll!"
-    # TODO: have it push the amount to the bankroll
-    menu
-  end
+  # # TODO: link this to the wallet class to get more money
+  # def get_money # will get money from the atm
+  #   puts "How much money would you like to get from the ATM?"
+  #   money = gets.strip.to_i
+  #   puts "Getting your money"; sleep 1
+  #   puts "Was successfully added to your bankroll!"
+  #   # TODO: have it push the amount to the bankroll
+  #   menu
+  # end
 
   def menu
     puts "What game would you like to play?"

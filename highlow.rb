@@ -1,14 +1,9 @@
 class HighLow
 
-  # attr_accessor :name, :bank_begin
-  attr_accessor :player, :name, :bank_begin
-
-  def initialize(player, name, bank_begin)
-    @player = player
-    @name = name
-    @bank_begin = bank_begin
+  def initialize(player)
     puts "Welcome to High Low: #{player.name}"
     puts "You have #{player.bank_begin} dollars to play with!\n"
+    highlow_menu
   end
 
   def highlow_menu
@@ -19,33 +14,37 @@ class HighLow
         when 1
           play
         when 2
-          exit
+          menu
         else
-          puts "I didn't understand; enter number 1 to play or 2 to quit"
+          puts "I didn't understand; enter number 1 to play or 2 to play a diferent game"
       end
   end
 
   def play
     puts 'Pick a number between 1 and 100'
-    guess = gets.strip.to_i
-    dealer_number = rand(1..100)
-      while guess != dealer_number
-        case guess
-          when guess > dealer_number
-            puts "That's too high.  Guess again: "
-            guess = gets.strip.to_i
-            count += 1
-          when guess < dealer_number
-            puts "That's too low.  Guess again: "
-            guess = gets.strip.to_i
-            count += 1
-          else
-            break
-        end
+    @dealer_number = rand(1..100)
+    again
+  end
+
+  def again
+  guess = gets.strip.to_i
+    if guess != @dealer_number
+      if guess > @dealer_number
+        puts "That's too high. Try again: "
+        again
+      else
+        puts "That's too low. Try again: "
+        again
       end
+    elsif guess == @dealer_number
+      puts "You won!!!"
+      @menu
+    else
+      puts "Please input a valid number"
+      again
+    end
   end
 
 end
 
-HighLow.new(@player, @name, @bank_begin)
-
+# highlow_1 = HighLow.new
