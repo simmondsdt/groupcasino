@@ -29,11 +29,11 @@ class Slots
     spin = []
 
     puts "Spinning\n"; sleep 0.5
-    option_01 = slot_01[rand(0..5)]
+    option_01 = slot_01[rand(0..4)]
+    option_02 = slot_02[rand(0..4)]
+    option_03 = slot_03[rand(0..4)]
     spin << option_01
-    option_02 = slot_02[rand(0..5)]
     spin << option_02
-    option_03 = slot_03[rand(0..5)]
     spin << option_03
     print "#{spin[0]} "; sleep 1
     print "#{spin[1]} "; sleep 1

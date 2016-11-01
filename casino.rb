@@ -64,7 +64,7 @@ class Casino
         @player = Player.new
         @players << @player
       else
-        puts "There are only 4 of your people allowed in the VIP Room"
+        puts "There are only 4 of your people allowed in the VIP Room\n"
       end
       menu
     end
