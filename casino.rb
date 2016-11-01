@@ -4,6 +4,9 @@ require 'colorize'
 require_relative 'player'
 require_relative 'highlow'
 require_relative 'slots'
+require_relative 'chohan'
+require_relative 'roulette'
+require_relative 'Under_Over7'
 
 class Casino
 
@@ -20,9 +23,12 @@ class Casino
   def menu_options # prints the options for the casino
     puts "1: Play High Low Game"
     puts "2: Play Slots"
-    puts "3: Add Money"
-    puts "4: View Profiles"
-    puts "5: Exit"
+    puts "3: Play ChoHan"
+    puts "4: Play Roulette"
+    puts "5: Play Under Over 7"
+    puts "6: Add Money"
+    puts "7: View Profiles"
+    puts "8: Exit"
   end
 
   def get_money
@@ -80,10 +86,16 @@ class Casino
       when "2"
         Slots.new(player, self)
       when "3"
-        get_money
+        Chohan.new(player, self)
       when "4"
-        profile
+        Roulette.new(player, self)
       when "5"
+        Under_Over7.new(player, self)
+      when "6"
+        get_money
+      when "7"
+        profile
+      when "8"
         puts "Goodbye" #lets user exit
         exit
       else
