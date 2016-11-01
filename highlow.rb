@@ -59,14 +59,14 @@ class HighLow
   def win
     @player.bank_roll = @player.bank_roll + (@bet * 2)
     @wallet = @player.bank_roll
-    puts "You won!! You now have: #{@wallet}"
+    puts "You won!! You now have: $#{@wallet}".colorize(:green)
     play_again
   end
 
   def lose
     @player.bank_roll = @player.bank_roll - @bet
     @wallet = @player.bank_roll
-    puts "You lost, you now have: #{@wallet}"
+    puts "You lost, you now have: $#{@wallet}".colorize(:red)
     play_again
   end
 

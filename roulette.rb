@@ -33,8 +33,8 @@ class Roulette
 
   def play_col_set
     puts "What color would you like to bet on?"
-    puts "1: Red"
-    puts "2: Black"
+    puts "1: Red".colorize(:red)
+    puts "2: Black".colorize(:blue)
     @color_select = gets.strip.to_i
     case @color_select
       when 1
@@ -61,12 +61,12 @@ class Roulette
   end
 
   def rolling
-    puts "\nYou are betting $#{@bet1} on #{@num} and $#{@bet2} on #{@col[0]}\n"
+    puts "\nYou are betting $#{@bet1} on #{@num} and $#{@bet2} on #{@col[0]}\n\n"
     print "Spinning . . . "
     print "\t\tYour bets: #{@col[0]} #{@num}"; sleep 2
     @number = rand(0..36)
     @color = @color_sel.sample
-    puts "\nThe winning number and color is #{@color} #{@number}";sleep 1
+    puts "\n\nThe winning number and color is #{@color} #{@number}";sleep 1
     if @number == @num && @color == @col[0]
       ultra_win
     elsif @color == @col[0]
@@ -92,7 +92,7 @@ class Roulette
       @bet = @bet1 && @bet2
       @player.bank_roll = @player.bank_roll + (@bet * 12)
       @wallet = @player.bank_roll
-      puts "You won!! You now have: #{@wallet}"
+      puts "You won!! You now have: $#{@wallet}".colorize(:green)
       play_again
     end
 
@@ -100,7 +100,7 @@ class Roulette
       @bet = @bet1 && @bet2
       @player.bank_roll = @player.bank_roll + (@bet * 2)
       @wallet = @player.bank_roll
-      puts "You won!! You now have: #{@wallet}"
+      puts "You won!! You now have: $#{@wallet}".colorize(:light_green)
       play_again
     end
 
@@ -108,7 +108,7 @@ class Roulette
       @bet = @bet1 && @bet2
       @player.bank_roll = @player.bank_roll - @bet
       @wallet = @player.bank_roll
-      puts "You lost, you now have: #{@wallet}"
+      puts "You lost, you now have: $#{@wallet}".colorize(:red)
       play_again
     end
 

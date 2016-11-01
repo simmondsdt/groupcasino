@@ -22,7 +22,7 @@ class Under_Over7
     puts "1) Under 7 (even)"
     puts "2) Over 7 (even)"
     puts "3) Betting on 7 (odd 4:1)"
-    puts "4) Exit\n"
+    # puts "4) Exit\n"
     play
   end
 
@@ -60,8 +60,8 @@ class Under_Over7
                 puts "You don't have enough"
                 @casino.menu
               end
-        when "4"
-              exit
+        # when "4"
+        #       @casino.menu
         else
           puts "I didn't understand; please enter number 1-4."
       end
@@ -125,26 +125,27 @@ class Under_Over7
     end
   end
 
-  def win
-    @player.bank_roll = @player.bank_roll + (@bet * 2)
-    @wallet = @player.bank_roll
-    puts "You won!! You now have: $#{@wallet}"
-    play_again
-  end
-
   def seven_win
     @player.bank_roll = @player.bank_roll + (@bet * 4)
     @wallet = @player.bank_roll
-    puts "You won!! You now have: $#{@wallet}"
+    puts "You won!! You now have: $#{@wallet}".colorize(:green)
+    play_again
+  end
+
+  def win
+    @player.bank_roll = @player.bank_roll + (@bet * 2)
+    @wallet = @player.bank_roll
+    puts "You won!! You now have: $#{@wallet}".colorize(:light_blue)
     play_again
   end
 
   def lose
     @player.bank_roll = @player.bank_roll - @bet
     @wallet = @player.bank_roll
-    puts "You lost, you now have: $#{@wallet}"
+    puts "You lost, you now have: $#{@wallet}".colorize(:red)
     play_again
   end
+
   def dice
     @die1 = 1 + rand(6)
     @die2 = 1 + rand(6)

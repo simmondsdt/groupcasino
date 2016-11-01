@@ -14,7 +14,7 @@ class Slots
     puts "How much would you like to bet?"
     @bet = gets.to_i
     if @bet < @player.bank_roll
-      puts "You are betting $#{@bet}"
+      puts "You are betting $#{@bet}\n\n"
       rolling
     else
       puts "You don't have enough money!"
@@ -28,16 +28,16 @@ class Slots
     slot_03 = ["Banana", "Apple", "Pear", "Cactus", "Peach"]
     spin = []
 
-    puts "Spinning\n"; sleep 0.5
+    puts "Spinning...\n\n"; sleep 0.5
     option_01 = slot_01[rand(0..4)]
     option_02 = slot_02[rand(0..4)]
     option_03 = slot_03[rand(0..4)]
     spin << option_01
     spin << option_02
     spin << option_03
-    print "#{spin[0]} "; sleep 1
-    print "#{spin[1]} "; sleep 1
-    print "#{spin[2]} "
+    print "#{spin[0]} ".colorize(:red); sleep 1
+    print "#{spin[1]} ".colorize(:yellow); sleep 1
+    print "#{spin[2]} \n".colorize(:green)
     spin = spin.uniq
     spin = spin.count
 
@@ -63,21 +63,21 @@ class Slots
   def win
     @player.bank_roll = @player.bank_roll + (@bet * 4)
     @wallet = @player.bank_roll
-    puts "\nJackpot!! You won $#{@bet * 4}!! You now have: #{@wallet}"
+    puts "\nJackpot!! You won $#{@bet * 4}!! You now have: $#{@wallet}".colorize(:green)
     play_again
   end
 
   def win2
-    @player.bank_roll = @player.bank_roll + (@bet * 1.5)
+    @player.bank_roll = @player.bank_roll + (@bet * 2)
     @wallet = @player.bank_roll
-    puts "\nOkay. You won $#{@bet * 1.5} and now have: #{@wallet}"
+    puts "\nOkay. You won $#{@bet * 2} and now have: $#{@wallet}".colorize(:light_blue)
     play_again
   end
 
   def lose
     @player.bank_roll = @player.bank_roll - @bet
     @wallet = @player.bank_roll
-    puts "\nYou lost, you now have: #{@wallet}"
+    puts "\nYou lost, you now have: $#{@wallet}".colorize(:red)
     play_again
   end
 
