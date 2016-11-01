@@ -60,19 +60,18 @@ class Casino
       puts "You chose #{player.name.capitalize}!!"
       menu
     else
-      if @players.count <= 4
+      if @players.count < 4
         @player = Player.new
         @players << @player
-        menu
       else
         puts "There are only 4 of your people allowed in the VIP Room"
-        menu
       end
+      menu
     end
   end
 
   def menu
-    puts "What game would you like to play?"
+    puts "\nWhat game would you like to play?"
     menu_options
     choice = gets.strip
     case choice
