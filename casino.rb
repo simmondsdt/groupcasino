@@ -21,7 +21,7 @@ class Casino
     puts "1: Play High Low Game"
     puts "2: Play Slots"
     puts "3: Add Money"
-    puts "4: View Profile"
+    puts "4: View Profiles"
     puts "5: Exit"
   end
 
@@ -48,31 +48,30 @@ class Casino
       puts "What player would you like to choose?"
       choose = gets.strip
       case choose
-        when 1
-          @player = players[0]
-        when 2
-          @player = players[1]
-        when 3
-          @player = players[2]
-        when 4
-          @player = players[3]
+        when "1"
+          @player = @players[0]
+        when "2"
+          @player = @players[1]
+        when "3"
+          @player = @players[2]
+        when "4"
+          @player = @players[3]
       end
       puts "You chose #{player.name.capitalize}!!"
       menu
     else
-      if @players.count <= 4
+      if @players.count < 4
         @player = Player.new
         @players << @player
-        menu
       else
         puts "There are only 4 of your people allowed in the VIP Room"
-        menu
       end
+      menu
     end
   end
 
   def menu
-    puts "What game would you like to play?"
+    puts "\nWhat game would you like to play?"
     menu_options
     choice = gets.strip
     case choice
