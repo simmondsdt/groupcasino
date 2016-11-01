@@ -1,50 +1,73 @@
 class HighLow
 
-  def initialize(player)
-    puts "Welcome to High Low: #{player.name}"
-    puts "You have #{player.bank_begin} dollars to play with!\n"
-    highlow_menu
-  end
+  attr_accessor :player, :casino
 
-  def highlow_menu
-    puts '1. Play HighLow (type 1)'
-    puts '2. Quit (type 2)'
-    menu_choice = gets.to_i
-      case menu_choice
-        when 1
-          play
-        when 2
-          menu
-        else
-          puts "I didn't understand; enter number 1 to play or 2 to play a diferent game"
-      end
+  def initialize(player, casino)
+    @casino = casino
+    @player = player
+    puts "Welcome to High Low: #{player.name}"
+    puts "You have $#{player.bank_roll} to play with!\n"
+    play
   end
 
   def play
-    puts 'Pick a number between 1 and 100'
-    @dealer_number = rand(1..100)
-    again
-  end
-
-  def again
-  guess = gets.strip.to_i
-    if guess != @dealer_number
-      if guess > @dealer_number
-        puts "That's too high. Try again: "
-        again
-      else
-        puts "That's too low. Try again: "
-        again
-      end
-    elsif guess == @dealer_number
-      puts "You won!!!"
-      @menu
+    puts "How much would you like to bet?"
+    @bet = gets.to_i
+    if @bet < @player.bank_roll
+      puts "You are betting $#{@bet}"
+      puts 'Pick a number between 1 and 10'
+      @dealer_number = rand(1..10)
+      continue
     else
-      puts "Please input a valid number"
-      again
+      puts "You don't have enough money!"
+      @casino.menu
     end
   end
 
-end
+  def continue
+    guess = gets.strip.to_i
+      if guess != @dealer_number
+        if guess > @dealer_number
+          puts "That's too high."
+          lose
+        elsif guess < @dealer_number
+          puts "That's too low."
+          lose
+        else
+          puts "Please input a valid option"
+          play
+        end
+      elsif guess == @dealer_number
+        puts "You won!!!"
+        win
+      else
+        puts "Please input a valid number"
+        play
+      end
+  end
 
-# highlow_1 = HighLow.new
+  def play_again
+    puts "Would you like to play again? (y/n)"
+    again = gets.strip.downcase
+    if again == 'y'
+      play
+    else
+      @casino.menu
+    end
+  end
+
+  def win
+    @player.bank_roll = @player.bank_roll + (@bet * 2)
+    @wallet = @player.bank_roll
+    puts "You won!! You now have: #{@wallet}"
+    play_again
+  end
+
+  def lose
+    @player.bank_roll = @player.bank_roll - @bet
+    @wallet = @player.bank_roll
+    puts "You lost, you now have: #{@wallet}"
+    play_again
+  end
+
+end
