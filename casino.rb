@@ -86,7 +86,7 @@ class Casino
       when "2"
         Slots.new(player, self)
       when "3"
-        Chohan.new(player, self)
+        ChoHan.new(player, self)
       when "4"
         Roulette.new(player, self)
       when "5"
