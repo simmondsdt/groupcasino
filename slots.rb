@@ -31,13 +31,13 @@ class Slots
     puts "Spinning\n"; sleep 0.5
     option_01 = slot_01[rand(0..5)]
     spin << option_01
-    print option_01; sleep 1
     option_02 = slot_02[rand(0..5)]
     spin << option_02
-    print " " + option_02; sleep 1
     option_03 = slot_03[rand(0..5)]
     spin << option_03
-    puts " " + option_03; sleep 3
+    print "#{spin[0]} "; sleep 1
+    print "#{spin[1]} "; sleep 1
+    print "#{spin[2]} "
     spin = spin.uniq
     spin = spin.count
 
