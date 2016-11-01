@@ -2,7 +2,7 @@
 #An even money bet that the total will be under 7
 #an even money bet that the total will be over 7
 #An odds bet that the total will be 7. Typical 4 to 1
-class Under_Over7
+class UnderOver7
 
   attr_accessor :player, :casino
 
@@ -68,10 +68,6 @@ class Under_Over7
   end
 
   def play_under
-    #@die1 = 1 + rand(6)
-    #@die2 = 1 + rand(6)
-    #print "Sum of dice is ", @die1 + @die2, ".\n"
-    #if (@die1 + @die2) < 7
       dice
       sum = @die1 + @die2
       if sum < 7
@@ -84,10 +80,6 @@ class Under_Over7
   end
 
   def play_over
-    #@die1 = 1 + rand(6)
-    #@die2 = 1 + rand(6)
-    #print "Sum of dice is ", @die1 + @die2, ".\n"
-    #if @die1 + @die2 > 7
     dice
     sum = @die1 + @die2
     if sum > 7
@@ -100,10 +92,6 @@ class Under_Over7
   end
 
   def play_seven
-    #@die1 = 1 + rand(6)
-    #@die2 = 1 + rand(6)
-    #print "Sum of dice is ", @die1 + @die2, ".\n"
-    #if @die1 + @die2 == 7
     dice
     sum = @die1 + @die2
     if sum == 7
@@ -123,6 +111,12 @@ class Under_Over7
     else
       @casino.menu
     end
+  end
+
+  def dice
+    @die1 = 1 + rand(6)
+    @die2 = 1 + rand(6)
+    print "Sum of dice is ", @die1 + @die2, ".\n"
   end
 
   def seven_win
@@ -145,12 +139,5 @@ class Under_Over7
     puts "You lost, you now have: $#{@wallet}".colorize(:red)
     play_again
   end
-
-  def dice
-    @die1 = 1 + rand(6)
-    @die2 = 1 + rand(6)
-    print "Sum of dice is ", @die1 + @die2, ".\n"
-  end
-
 
 end

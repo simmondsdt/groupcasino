@@ -6,7 +6,7 @@ require_relative 'highlow'
 require_relative 'slots'
 require_relative 'chohan'
 require_relative 'roulette'
-require_relative 'Under_Over7'
+require_relative 'underover7'
 
 class Casino
 
@@ -90,7 +90,7 @@ class Casino
       when "4"
         Roulette.new(player, self)
       when "5"
-        Under_Over7.new(player, self)
+        UnderOver7.new(player, self)
       when "6"
         get_money
       when "7"
