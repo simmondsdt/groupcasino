@@ -3,13 +3,13 @@ class Player
   attr_accessor :name, :bank_roll
 
   def initialize
-    puts "What's your name player?"
+    puts "\nWhat's your name player?"
       @name = gets.strip
       if @name.empty?
         puts "Please put a name"
         Player.new
       else
-        puts "How much money do you have in your wallet #{@name}"
+        puts "\nHow much money do you have in your wallet #{@name}?"
           amount = gets.strip.to_i
           if amount < 5000
             @bank_roll = amount

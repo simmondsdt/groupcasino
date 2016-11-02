@@ -7,19 +7,26 @@ class Roulette
     @col = []
     @player = player
     @casino = casino
-    puts "Welcome to Roulette: #{player.name}"
+     #puts "Welcome to Roulette: #{player.name}"
+    puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX".colorize(:color => :red, :background => :light_white)
+    puts "XX                                                    ".colorize(:color => :red, :background => :light_white) + "XX".colorize(:color => :red, :background => :light_white)
+    puts "XX                                                    ".colorize(:color => :red, :background => :light_white) + "XX".colorize(:color => :red, :background => :light_white)
+    puts "XX                      ".colorize(:color => :red, :background => :light_white) + "ROULETTE".colorize(:color => :black, :background => :light_white) + "                      XX".colorize(:color => :red, :background => :light_white)
+    puts "XX                                                    ".colorize(:color => :red, :background => :light_white) + "XX".colorize(:color => :red, :background => :light_white)
+     puts "XX                                                    ".colorize(:color => :red, :background => :light_white) + "XX".colorize(:color => :red, :background => :light_white)
+    puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX".colorize(:color => :red, :background => :light_white)
     play_num
   end
 
   def play_num
-    puts "You have $#{player.bank_roll} to play with!"
-    puts "What number would you like to bet on? (0-36)"
+    puts "\nYou have $#{player.bank_roll} to play with!"
+    puts "\nWhich number would you like to bet? (0-36)"
     @num = gets.strip.to_i
     if @num < 36
-      puts "How much would you like to bet?"
+      puts "\nHow much would you like to bet?"
       @bet1 = gets.strip.to_i
       if (@bet1 < @player.bank_roll)
-        puts "You are betting $#{@bet1} on #{@num}"
+        puts "\nYou are betting $#{@bet1} on #{@num}"
         play_col_set
       else
         puts "You don't have enough money!"
@@ -32,9 +39,9 @@ class Roulette
   end
 
   def play_col_set
-    puts "What color would you like to bet on?"
+    puts "\nWhich color would you like to bet?\n"
     puts "1: Red".colorize(:red)
-    puts "2: Black".colorize(:blue)
+    puts "2: Black".colorize(:light_black)
     @color_select = gets.strip.to_i
     case @color_select
       when 1
@@ -44,7 +51,7 @@ class Roulette
         @col << @color_sel[1]
         play_color
       else
-        puts "Please put a correct color"
+        puts "Please select a valid color."
     end
   end
 
@@ -62,11 +69,11 @@ class Roulette
 
   def rolling
     puts "\nYou are betting $#{@bet1} on #{@num} and $#{@bet2} on #{@col[0]}\n\n"
-    print "Spinning . . . "
+    print "Spinning . . . ".colorize(:yellow)
     print "\t\tYour bets: #{@col[0]} #{@num}"; sleep 2
     @number = rand(0..36)
     @color = @color_sel.sample
-    puts "\n\nThe winning number and color is #{@color} #{@number}";sleep 1
+    puts "\n\nThe winning number and color is #{@color} #{@number}\n\n";sleep 1
     if @number == @num && @color == @col[0]
       ultra_win
     elsif @color == @col[0]

@@ -7,8 +7,12 @@ attr_accessor :player, :casino
 def initialize(player, casino)
   @player = player
   @casino = casino
-  puts "~~Welcome to " + "Cho-Han Bakuchi".colorize(:color => :blue, :background => :light_blue) +"~~~\n"
-  puts "A fun game of 6 dice, with a 50/50 chance of winning!\n\n"
+  puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".colorize(:color => :cyan, :background => :blue)
+  puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".colorize(:color => :cyan, :background => :blue)
+  puts "                   Cho-Han Bakuchi                   ".colorize(:color => :light_green, :background => :blue)
+  puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".colorize(:color => :cyan, :background => :blue)
+  puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".colorize(:color => :cyan, :background => :blue)
+  puts "\nA fun game of 6 dice, with a 50/50 chance of winning!\n\n"
   play
 end
 
@@ -47,7 +51,7 @@ def pick_cho_han
 end
 
 def roll
- puts "\nRolling......\n"
+ puts "\nRolling......\n".cyan.blink; sleep 1
  @die1 = 1 + rand(6)
  @die2 = 1 + rand(6)
  @die3 = 1 + rand(6)

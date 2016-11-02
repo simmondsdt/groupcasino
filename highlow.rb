@@ -5,16 +5,18 @@ class HighLow
   def initialize(player, casino)
     @casino = casino
     @player = player
-    puts "Welcome to High Low: #{player.name}"
-    puts "You have $#{player.bank_roll} to play with!\n"
+    puts "\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".colorize(:light_blue)
+    puts "\n                  Welcome to High Low\n".colorize(:light_yellow)
+    puts " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".colorize(:light_blue)
+    puts "\n\nYou have $#{player.bank_roll} to play with!"
     play
   end
 
   def play
-    puts "How much would you like to bet?"
+    puts "\nHow much would you like to bet?"
     @bet = gets.to_i
     if @bet < @player.bank_roll
-      puts "You are betting $#{@bet}"
+      puts "You are betting $#{@bet} for a ONE-time play!\n".colorize(:color => :light_yellow, :mode => :italic)
       puts 'Pick a number between 1 and 10'
       @dealer_number = rand(1..10)
       continue
@@ -28,17 +30,17 @@ class HighLow
     guess = gets.strip.to_i
       if guess != @dealer_number
         if guess > @dealer_number
-          puts "That's too high."
+          puts "\nThat's too high."
           lose
         elsif guess < @dealer_number
-          puts "That's too low."
+          puts "\nThat's too low."
           lose
         else
           puts "Please input a valid option"
           play
         end
       elsif guess == @dealer_number
-        puts "You won!!!"
+        puts "\nYou won!!!".colorize(:green)
         win
       else
         puts "Please input a valid number"
@@ -59,14 +61,14 @@ class HighLow
   def win
     @player.bank_roll = @player.bank_roll + (@bet * 2)
     @wallet = @player.bank_roll
-    puts "You won!! You now have: $#{@wallet}".colorize(:green)
+    puts "You now have: $#{@wallet}".colorize(:green)
     play_again
   end
 
   def lose
     @player.bank_roll = @player.bank_roll - @bet
     @wallet = @player.bank_roll
-    puts "You lost, you now have: $#{@wallet}".colorize(:red)
+    puts "\nYou lost, you now have: $#{@wallet}".colorize(:red)
     play_again
   end
 

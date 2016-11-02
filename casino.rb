@@ -14,7 +14,11 @@ class Casino
 
   def initialize
     @players = []
-    puts 'Welcome to the ruby CASINO!'.colorize(:yellow)
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$".colorize(:light_yellow)
+    puts "$$                                                            $$".colorize(:light_yellow)
+    puts "$$".colorize(:light_yellow)+"                   Welcome to the CASINO!".colorize(:red)+"                   $$".colorize(:light_yellow)
+    puts "$$                                                            $$".colorize(:light_yellow)
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$".colorize(:light_yellow)
     @player = Player.new
     @players << @player
     menu

@@ -5,13 +5,15 @@ class Slots
   def initialize(player, casino)
     @casino = casino
     @player = player
-    puts "Welcome to the Slot Machine: #{player.name}"
-    puts "You have $#{player.bank_roll} to play with!\n"
+    puts "**********************************************************\n".colorize(:light_yellow)
+    puts "                          SLOTS                           \n".colorize(:light_cyan)
+    puts "**********************************************************".colorize(:light_yellow)
+    puts "\n\nYou have $#{player.bank_roll} to play with!"
     play
   end
 
   def play
-    puts "How much would you like to bet?"
+    puts "\nHow much would you like to bet?"
     @bet = gets.to_i
     if @bet < @player.bank_roll
       puts "You are betting $#{@bet}\n\n"
@@ -28,7 +30,7 @@ class Slots
     slot_03 = ["Banana", "Apple", "Pear", "Cactus", "Peach"]
     spin = []
 
-    puts "Spinning...\n\n"; sleep 0.5
+    puts "Spinning...\n\n".colorize(:light_magenta); sleep 0.5
     option_01 = slot_01[rand(0..4)]
     option_02 = slot_02[rand(0..4)]
     option_03 = slot_03[rand(0..4)]

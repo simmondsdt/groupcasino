@@ -5,27 +5,29 @@ class UnderOver7
   def initialize(player, casino)
     @player = player
     @casino = casino
-    puts "Welcome to Under-Over 7 #{player.name}\n"
-    # puts "Glad to see you brought your #{charm}."
+    puts "∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞\n".colorize(:cyan)
+    puts "     UNDER      ".colorize(:light_green) + "    ••     7      ••".colorize(:light_blue) + "          OVER\n".colorize(:light_green)
+    puts "∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞".colorize(:cyan)
     options
   end
+
 
   def options
     puts "\nYou have #{player.bank_roll} in your bank."
     puts "What would you like to do?"
-    puts "1) Bet Under 7 (even)"
+    puts "\n1) Bet Under 7 (even)"
     puts "2) Bet Over 7 (even)"
     puts "3) Bet on 7 (odd 4:1)"
     @choice = gets.strip
     case @choice
       when '1'
-        puts "You are betting on Under 7"
+        puts "\nYou are betting on UNDER 7"
         bet
       when '2'
-        puts "You are betting on Over 7"
+        puts "\nYou are betting on OVER 7"
         bet
       when '3'
-        puts "You are betting on 7"
+        puts "\nYou are betting on 7"
         bet
       else
         puts "Please put a correct number"
@@ -37,7 +39,7 @@ class UnderOver7
     puts "How much would you like to bet?"
     @bet = gets.strip.to_i
     if @bet < @player.bank_roll
-      puts "Your bet was placed"
+      puts "\nYour bet was placed..."
       play
     else
       puts "You don't have enough money!"
@@ -78,10 +80,11 @@ class UnderOver7
   end
 
   def play_again
-    puts "Would you like to play again? (y/n)"
+    puts "\nWould you like to play again? (y/n)"
     again = gets.strip.downcase
     if again == 'y'
-      under_menu_options
+      #under_menu_options
+      options
     else
       @casino.menu
     end
