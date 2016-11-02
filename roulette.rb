@@ -95,7 +95,7 @@ class Roulette
       end
     end
 
-    def utra_win
+    def ultra_win
       @bet = @bet1 && @bet2
       @player.bank_roll = @player.bank_roll + (@bet * 12)
       @wallet = @player.bank_roll
