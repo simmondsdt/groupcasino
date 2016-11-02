@@ -13,7 +13,7 @@ class UnderOver7
 
 
   def options
-    puts "\nYou have #{player.bank_roll} in your bank."
+    puts "\nYou have $#{player.bank_roll} to play with."
     puts "What would you like to do?"
     puts "\n1) Bet Under 7 (even)"
     puts "2) Bet Over 7 (even)"

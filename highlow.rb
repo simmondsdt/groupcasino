@@ -8,11 +8,11 @@ class HighLow
     puts "\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".colorize(:light_blue)
     puts "\n                  Welcome to High Low\n".colorize(:light_yellow)
     puts " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".colorize(:light_blue)
-    puts "\n\nYou have $#{player.bank_roll} to play with!"
     play
   end
 
   def play
+    puts "\n\nYou have $#{player.bank_roll} to play with!"
     puts "\nHow much would you like to bet?"
     @bet = gets.to_i
     if @bet < @player.bank_roll

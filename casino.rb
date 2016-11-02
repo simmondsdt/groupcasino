@@ -7,6 +7,7 @@ require_relative 'slots'
 require_relative 'chohan'
 require_relative 'roulette'
 require_relative 'underover7'
+require_relative 'special'
 
 class Casino
 
@@ -30,15 +31,16 @@ class Casino
     puts "3: Play ChoHan"
     puts "4: Play Roulette"
     puts "5: Play Under Over 7"
-    puts "6: Add Money"
-    puts "7: View Profiles"
-    puts "8: Exit"
+    puts "6: Drink a Beer"
+    puts "7: Add Money"
+    puts "8: View Profiles"
+    puts "9: Exit"
   end
 
   def get_money
     puts "How much would you like to add to your wallet?"
     amount = gets.strip.to_i
-    if amount < 10000
+    if amount < 50000
       @player.bank_roll = @player.bank_roll + amount
       puts "You now have $#{@player.bank_roll}"
       menu
@@ -96,10 +98,12 @@ class Casino
       when "5"
         UnderOver7.new(player, self)
       when "6"
-        get_money
+        Special.new(player, self)
       when "7"
-        profile
+        get_money
       when "8"
+        profile
+      when "9"
         puts "Goodbye" #lets user exit
         exit
       else

@@ -7,7 +7,6 @@ class Roulette
     @col = []
     @player = player
     @casino = casino
-     #puts "Welcome to Roulette: #{player.name}"
     puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX".colorize(:color => :red, :background => :light_white)
     puts "XX                                                    ".colorize(:color => :red, :background => :light_white) + "XX".colorize(:color => :red, :background => :light_white)
     puts "XX                                                    ".colorize(:color => :red, :background => :light_white) + "XX".colorize(:color => :red, :background => :light_white)
@@ -19,6 +18,7 @@ class Roulette
   end
 
   def play_num
+    puts "Welcome: #{player.name}"
     puts "\nYou have $#{player.bank_roll} to play with!"
     puts "\nWhich number would you like to bet? (0-36)"
     @num = gets.strip.to_i

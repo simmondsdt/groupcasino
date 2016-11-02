@@ -17,6 +17,7 @@ def initialize(player, casino)
 end
 
 def play
+  puts "You have $#{@player.bank_roll} to play with"
   puts "How much would you like to bet?"
   @bet = gets.to_i
   if @bet < @player.bank_roll
@@ -113,4 +114,3 @@ end
   end
 
 end
-

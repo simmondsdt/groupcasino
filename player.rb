@@ -11,7 +11,7 @@ class Player
       else
         puts "\nHow much money do you have in your wallet #{@name}?"
           amount = gets.strip.to_i
-          if amount < 5000
+          if amount < 10000
             @bank_roll = amount
           else
             puts "You don't have that much, get a loan!"

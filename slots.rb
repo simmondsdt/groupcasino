@@ -8,11 +8,11 @@ class Slots
     puts "**********************************************************\n".colorize(:light_yellow)
     puts "                          SLOTS                           \n".colorize(:light_cyan)
     puts "**********************************************************".colorize(:light_yellow)
-    puts "\n\nYou have $#{player.bank_roll} to play with!"
     play
   end
 
   def play
+    puts "\n\nYou have $#{player.bank_roll} to play with!"
     puts "\nHow much would you like to bet?"
     @bet = gets.to_i
     if @bet < @player.bank_roll
@@ -72,7 +72,7 @@ class Slots
   def win2
     @player.bank_roll = @player.bank_roll + (@bet * 2)
     @wallet = @player.bank_roll
-    puts "\nOkay. You won $#{@bet * 2} and now have: $#{@wallet}".colorize(:light_blue)
+    puts "\nYou won $#{@bet * 2} and now have: $#{@wallet}".colorize(:light_blue)
     play_again
   end
 
