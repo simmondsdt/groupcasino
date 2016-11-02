@@ -1,7 +1,3 @@
-#Under-Over 7
-#An even money bet that the total will be under 7
-#an even money bet that the total will be over 7
-#An odds bet that the total will be 7. Typical 4 to 1
 class UnderOver7
 
   attr_accessor :player, :casino
@@ -9,97 +5,75 @@ class UnderOver7
   def initialize(player, casino)
     @player = player
     @casino = casino
-    puts "Welcome to Under-Over 7 #{player.name}"
-    puts "You have #{player.bank_roll} in your bank."
+    puts "Welcome to Under-Over 7 #{player.name}\n"
     # puts "Glad to see you brought your #{charm}."
-    under_menu_options
+    options
   end
 
-  def under_menu_options
-    puts "\nLets Play Under-Over 7\n\n"
-    puts "You will be rolling 2 die.\n"
-    puts "Select betting option:"
-    puts "1) Under 7 (even)"
-    puts "2) Over 7 (even)"
-    puts "3) Betting on 7 (odd 4:1)"
-    # puts "4) Exit\n"
-    play
+  def options
+    puts "\nYou have #{player.bank_roll} in your bank."
+    puts "What would you like to do?"
+    puts "1) Bet Under 7 (even)"
+    puts "2) Bet Over 7 (even)"
+    puts "3) Bet on 7 (odd 4:1)"
+    @choice = gets.strip
+    case @choice
+      when '1'
+        puts "You are betting on Under 7"
+        bet
+      when '2'
+        puts "You are betting on Over 7"
+        bet
+      when '3'
+        puts "You are betting on 7"
+        bet
+      else
+        puts "Please put a correct number"
+        options
+    end
+  end
+
+  def bet
+    puts "How much would you like to bet?"
+    @bet = gets.strip.to_i
+    if @bet < @player.bank_roll
+      puts "Your bet was placed"
+      play
+    else
+      puts "You don't have enough money!"
+      @casino.menu
+    end
+  end
+
+  def dice
+    @die1 = 1 + rand(6)
+    @die2 = 1 + rand(6)
+    @sum = @die1 + @die2
+    print "The sum of the dice is ", @die1 + @die2
   end
 
   def play
-    puts "What would you like to do?"
-    bet_choice = gets.strip
-      case bet_choice
-        when "1"
-          puts "Place your bet."
-              @bet = gets.to_i
-              if @bet < @player.bank_roll
-                puts "You are betting $#{@bet} on Under 7"
-                play_under
-              else
-                puts "You don't have enough"
-                @casino.menu
-              end
-        when "2"
-          puts "Place your bet."
-              @bet = gets.to_i
-              if @bet < @player.bank_roll
-                puts "You are betting $#{@bet} on Over 7"
-                play_over
-              else
-                puts "You don't have enough"
-                menu #TODO: make it go to casino menu
-              end
-        when "3"
-          puts "Place your bet."
-              @bet = gets.to_i
-              if @bet < @player.bank_roll
-                puts "You are betting $#{@bet} on 7"
-                play_seven
-              else
-                puts "You don't have enough"
-                @casino.menu
-              end
-        # when "4"
-        #       @casino.menu
-        else
-          puts "I didn't understand; please enter number 1-4."
-      end
-  end
-
-  def play_under
+    if @choice == '1'
       dice
-      sum = @die1 + @die2
-      if sum < 7
-      puts "You win."
-      win
+      if @sum < 7
+        win
+      else
+        lose
+      end
+    elsif @choice == '2'
+      dice
+      if @sum > 7
+        win
+      else
+        lose
+      end
     else
-      puts "You lose."
-      lose
-    end
-  end
-
-  def play_over
-    dice
-    sum = @die1 + @die2
-    if sum > 7
-      puts "You win."
-      win
-    else
-      puts "You lose."
-      lose
-    end
-  end
-
-  def play_seven
-    dice
-    sum = @die1 + @die2
-    if sum == 7
-      puts "You win."
-      seven_win
-    else
-      puts "You lose."
-      lose
+      dice
+      if @sum == 7
+        seven_win
+      else
+        lose
+      end
     end
   end
 
@@ -113,30 +87,24 @@ class UnderOver7
     end
   end
 
-  def dice
-    @die1 = 1 + rand(6)
-    @die2 = 1 + rand(6)
-    print "Sum of dice is ", @die1 + @die2, ".\n"
-  end
-
   def seven_win
     @player.bank_roll = @player.bank_roll + (@bet * 4)
     @wallet = @player.bank_roll
-    puts "You won!! You now have: $#{@wallet}".colorize(:green)
+    puts "\n\nYou won!! You now have: $#{@wallet}".colorize(:green)
     play_again
   end
 
   def win
     @player.bank_roll = @player.bank_roll + (@bet * 2)
     @wallet = @player.bank_roll
-    puts "You won!! You now have: $#{@wallet}".colorize(:light_blue)
+    puts "\n\nYou won!! You now have: $#{@wallet}".colorize(:light_blue)
     play_again
   end
 
   def lose
     @player.bank_roll = @player.bank_roll - @bet
     @wallet = @player.bank_roll
-    puts "You lost, you now have: $#{@wallet}".colorize(:red)
+    puts "\n\nYou lost, you now have: $#{@wallet}".colorize(:red)
     play_again
   end
 
